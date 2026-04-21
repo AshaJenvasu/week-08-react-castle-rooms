@@ -13,8 +13,9 @@ export default function SecretRoom({ question, answer, handleAnswer }) {
         placeholder="Type your reply here..."
       />
       <p className="py-5">
-        {" "}
-        <span> {answer ? answer : " ⏳ Waiting for a message..."}</span>
+        <span className="text-yellow-300">
+          {answer ? answer : "⏳ Waiting for a message..."}
+        </span>
       </p>
     </div>
   );

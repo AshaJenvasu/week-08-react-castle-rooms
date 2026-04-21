@@ -20,8 +20,7 @@ export default function App() {
       <p className="text-purple-300">Message for JSD12:</p>
 
       <span className="text-yellow-300">
-        {/* question or waiti ng for a message */}
-        {question ? question : "Waiting for a message..."}
+        {question ? question : "⏳ Waiting for a message..."}
       </span>
 
       <textarea
@@ -32,8 +31,8 @@ export default function App() {
       />
       <p className="text-green-300">
         Reply from Secret Room:
-        <span className='"text-yellow-300'>
-          {/* reply or waiting for a reply */}
+        <span className="text-yellow-300">
+          {answer ? answer : " ⏳ Waiting for a reply..."}
         </span>
       </p>
       <Castle question={question} answer={answer} handleAnswer={handleAnswer} />
