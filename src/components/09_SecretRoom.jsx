@@ -37,16 +37,17 @@ export default function SecretRoom({ question, handleAnswer }) {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center pt-10 bg-gray-700 w-[90%] pb-10 rounded-lg">
+    <div className="flex flex-col justify-center items-center pt-10 bg-gray-700 w-[90%] pb-10 rounded-lg shadow-2xl border-2 border-pink-500/30">
       <div className="flex flex-col items-center mb-6">
         <img
           src={elizabethImg}
           alt="Elizabeth"
           className="w-32 h-32 rounded-full border-4 border-pink-400 shadow-[0_0_20px_rgba(244,114,182,0.5)] object-cover animate-pulse"
         />
-        <h1 className="font-bold text-4xl mt-4 text-white drop-shadow-md">
-          Secret Room
-        </h1>
+        <h2 className="font-bold text-3xl mt-4 text-pink-300 tracking-wide">
+          Elizabeth Liones
+        </h2>
+        <p className="text-gray-400 text-sm">Third Princess of Liones</p>
       </div>
 
       <p className="text-white text-lg bg-gray-900 p-4 rounded min-w-[300px] text-center">
