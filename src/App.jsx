@@ -1,6 +1,7 @@
 import Castle from "./components/01_Castle.jsx";
 import { useState } from "react";
 import SecretRoom from "./components/09_SecretRoom.jsx";
+import SimpleAsyncAwait from "./example/async/SimpleAsyncAwait.jsx";
 
 export default function App() {
   const [question, setQuestion] = useState();
@@ -36,6 +37,7 @@ export default function App() {
         </span>
       </p>
       <Castle question={question} answer={answer} handleAnswer={handleAnswer} />
+      <SimpleAsyncAwait />
     </div>
   );
 }
