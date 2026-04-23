@@ -1,40 +1,10 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import elizabethImg from "../assets/elizabeth.jpg";
+import MessageContext from "../contexts/messageContext/MessageContext.jsx";
 
-export default function SecretRoom({ question, handleAnswer }) {
-  const [replyText, setReplyText] = useState("");
-
-  const [isTyping, setIsTyping] = useState(false);
-
-  useEffect(() => {
-    // ถ้าเพิ่งโหลดหน้าจอ หรือช่องข้อความว่างเปล่า ให้หยุดการทำงานแค่นี้
-    if (!replyText) {
-      setIsTyping(false);
-      return;
-    }
-
-    // เริ่มขึ้นสถานะว่ากำลังเตรียมส่ง
-    setIsTyping(true);
-
-    // ตั้งเวลา (Timeout) ว่าถ้าผ่านไป 2 วินาที จะให้ส่งข้อความออกไป
-    const timerId = setTimeout(() => {
-      // ส่งข้อความผ่าน prop handleAnswer (สร้าง object จำลอง event คืนไปให้ App.jsx)
-      handleAnswer({ target: { value: replyText } });
-      setIsTyping(false); // เลิกโชว์สถานะพิมพ์
-    }, 2000);
-
-    // ถ้าเอลิซาเบธพิมพ์ตัวอักษรใหม่ "ก่อน" ที่จะครบ 2 วินาที
-    // ฟังก์ชันนี้จะไป "ยกเลิก" การนับเวลาของเก่าทิ้ง แล้วเริ่มนับ 1 ใหม่
-    return () => {
-      clearTimeout(timerId);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [replyText]); // จะทำงานทุกครั้งที่ replyText (ข้อความที่พิมพ์) มีการเปลี่ยนแปลง
-
-  // ฟังก์ชันรับค่าตอนพิมพ์
-  const handleTypeReply = (e) => {
-    setReplyText(e.target.value);
-  };
+export default function SecretRoom() {
+  const { question, handleTypeReply, isTyping, replyText } =
+    useContext(MessageContext);
 
   return (
     <div className="flex flex-col justify-center items-center pt-10 bg-gray-700 w-[90%] pb-10 rounded-lg shadow-2xl border-2 border-pink-500/30">

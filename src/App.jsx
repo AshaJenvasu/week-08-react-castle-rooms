@@ -1,5 +1,6 @@
+import MessageContext from "./contexts/messageContext/MessageContext.jsx";
+import { useContext } from "react";
 import Castle from "./components/01_Castle.jsx";
-import { useState } from "react";
 import meliodasImg from "./assets/meliodas.jpg";
 import fullCounterVideo from "./assets/fullcounter.mp4";
 import reunitedImg from "./assets/reunited.jpg";
@@ -7,40 +8,19 @@ import reunitedImg from "./assets/reunited.jpg";
 // import SecretRoom from "./components/09_SecretRoom.jsx";
 // import SimpleAsyncAwait from "./example/async/SimpleAsyncAwait.jsx";
 
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
 export default function App() {
-  const [inputText, setInputText] = useState("");
-  const [question, setQuestion] = useState();
-  const [answer, setAnswer] = useState();
-  const [isSending, setIsSending] = useState(false);
-  const [isRescued, setIsRescued] = useState(false);
-  const [isPlayingVideo, setIsPlayingVideo] = useState(false);
-
-  const handleRescueAction = async () => {
-    setIsPlayingVideo(true);
-  };
-
-  const handleInput = (e) => {
-    setInputText(e.target.value);
-  };
-
-  const handleAnswer = (e) => {
-    console.log(e);
-    setAnswer(e.target.value);
-  };
-
-  const handleSendMessage = async () => {
-    if (!inputText) return;
-
-    setIsSending(true);
-
-    await delay(3000);
-
-    setQuestion(inputText);
-    setIsSending(false);
-    setInputText("");
-  };
+  const {
+    inputText,
+    answer,
+    isSending,
+    isRescued,
+    isPlayingVideo,
+    handleRescueAction,
+    handleInput,
+    handleSendMessage,
+    setIsRescued,
+    setIsPlayingVideo,
+  } = useContext(MessageContext);
 
   return (
     <div className="pb-80 py-10 gap-y-4 flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white">
@@ -111,11 +91,7 @@ export default function App() {
             {answer ? ` ${answer}` : " ⏳ Waiting for a reply..."}
           </span>
 
-          <Castle
-            question={question}
-            answer={answer}
-            handleAnswer={handleAnswer}
-          />
+          <Castle />
         </>
       ) : (
         <div className="flex flex-col items-center animate-ready">
