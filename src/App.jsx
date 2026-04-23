@@ -4,6 +4,7 @@ import Castle from "./components/01_Castle.jsx";
 import meliodasImg from "./assets/meliodas.jpg";
 import fullCounterVideo from "./assets/fullcounter.mp4";
 import reunitedImg from "./assets/reunited.jpg";
+import Home from "./components/00_Home.jsx";
 
 // import SecretRoom from "./components/09_SecretRoom.jsx";
 // import SimpleAsyncAwait from "./example/async/SimpleAsyncAwait.jsx";
@@ -20,11 +21,14 @@ export default function App() {
     handleSendMessage,
     setIsRescued,
     setIsPlayingVideo,
+    gameState,
   } = useContext(MessageContext);
 
   return (
     <div className="pb-80 py-10 gap-y-4 flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white">
-      {isPlayingVideo ? (
+      {gameState === "home" ? (
+        <Home />
+      ) : isPlayingVideo ? (
         <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
           <video
             src={fullCounterVideo}
@@ -42,7 +46,7 @@ export default function App() {
       ) : !isRescued ? (
         <>
           <h1 className="text-4xl md:text-5xl font-black text-yellow-500  mb-8 tracking-wider italic">
-            Nanatsu no Taizai:{" "}
+            Nanatsu no Taizai:
             <span className="text-white">Rescue Elizabeth</span>
           </h1>
 

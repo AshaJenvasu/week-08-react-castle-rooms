@@ -9,6 +9,7 @@ const MessageProvider = ({ children }) => {
   const [isSending, setIsSending] = useState(false);
   const [isRescued, setIsRescued] = useState(false);
   const [isPlayingVideo, setIsPlayingVideo] = useState(false);
+  const [gameState, setGameState] = useState("home");
 
   const [replyText, setReplyText] = useState("");
 
@@ -86,6 +87,8 @@ const MessageProvider = ({ children }) => {
         isTyping,
         replyText,
         setIsPlayingVideo,
+        gameState,
+        setGameState,
       }}
     >
       {children}
