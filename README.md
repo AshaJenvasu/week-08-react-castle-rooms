@@ -1,32 +1,93 @@
-## Vite + React Starter
+# 📜 Nanatsu no Taizai: Rescue Elizabeth Project Summary
 
-A concise starter codebase for React apps built with Vite. It ships with modern tooling, Tailwind CSS v4, and basic project scaffolding so you can start building immediately.
+## 🏰 Project Overview
+A React-based interactive storytelling application inspired by the anime *The Seven Deadly Sins*.  
+The project demonstrates advanced React concepts by simulating a mission where Meliodas navigates through a multi-layered castle to rescue Princess Elizabeth.
 
-### What's Included
-- **Vite Build Tool:** Fast dev server, optimized builds, and zero-config defaults via `vite.config.js`.
-- **React 19:** Latest React and `react-dom` set up with `@vitejs/plugin-react`.
-- **Tailwind CSS v4:** Tailwind configured using `@tailwindcss/vite` with styles in `src/index.css`.
-- **ESLint:** Base config in `eslint.config.js` with React Hooks and React Refresh plugins.
-- **Starter Files:** `index.html`, `src/main.jsx`, `src/App.jsx`, `src/assets/`, and `public/` ready to customize.
-- **Deployment Config:** `vercel.json` for path resolution when deploying to Vercel.
+---
 
-### Scripts
-- `dev`: Start the Vite dev server.
-- `build`: Create a production build.
-- `preview`: Preview the production build locally.
-- `lint`: Run ESLint on the project.
+## 🛠️ Technical Stack
+- **Frontend Library:** React.js  
+- **Styling:** Tailwind CSS (layout and animations)  
+- **State Management:** React Context API (centralized data flow)  
+- **Logic:** async/await for timed events and conditional rendering  
 
-### Project Structure
-```
-vite-react-app/
-├─ index.html
-├─ eslint.config.js
-├─ vite.config.js
-├─ vercel.json
-├─ public/
-└─ src/
-	├─ main.jsx
-	├─ App.jsx
-	├─ index.css
-	└─ assets/
-```
+---
+
+## ✨ Key Features
+
+### 1. Centralized State (Context API)
+Moved from **Prop Drilling** (passing data through 9 layers of components) to a **Global Store**.
+
+- **MessageProvider**
+  - Manages user inputs  
+  - Handles replies from Elizabeth  
+  - Controls game states (home, playing, rescuing)
+
+**Benefits:**
+- Cleaner code structure  
+- Easier communication between top-level `App` and deep component `SecretRoom`  
+
+---
+
+### 2. Multi-Scene Management
+The application transitions through three distinct phases:
+
+- **Home Scene**
+  - Landing page  
+  - Call-to-action supporting the original creator  
+  - Manga cover link  
+
+- **Battle Scene**
+  - Core gameplay  
+  - User interacts with castle layers  
+
+- **Cinematic Scene**
+  - Triggered video event  
+  - Features Meliodas's **"Full Counter"** during rescue  
+
+---
+
+### 3. Smart Keyword Detection
+- Uses:
+  ```js
+  .toLowerCase().includes("help")
+  - Monitors Elizabeth's replies  
+- Unlocks **"Go Rescue Elizabeth"** button via conditional rendering when keyword is detected  
+
+---
+
+## 🎬 4. Cinematic Finish
+- Implemented `onEnded` event on HTML5 `<video>`  
+- Ensures UI transitions precisely when animation ends  
+
+### Final Scene Includes:
+- Heart-warming reunion image  
+- Smooth fade-in animation  
+
+---
+
+## 🏗️ Architecture Design
+
+| Component            | Responsibility |
+|---------------------|----------------|
+| MessageProvider     | The "Magic Source" holding all shared states |
+| 00_Home             | Landing gate with external manga support links |
+| App.jsx             | "Grand Stage" controlling scene rendering |
+| 01_Castle → 08_Chamber | Structural layers of the castle |
+| 09_SecretRoom       | Final destination where Elizabeth resides |
+
+---
+
+## 🏁 Conclusion
+
+This project evolved from a simple data-passing exercise into a **full-featured React mini-game**.
+
+### It demonstrates:
+- Complex UI state management  
+- Multimedia integration  
+- Efficient global data handling  
+
+---
+
+> **"I told you... I'd protect you." — Meliodas**
